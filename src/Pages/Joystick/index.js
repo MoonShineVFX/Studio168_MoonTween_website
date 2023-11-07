@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Joystick } from 'react-joystick-component';
+import { database } from '../../firebase';
+import { onValue, ref } from "firebase/database";
 function Index() {
   const [ move ,setMove] = useState('')
   const [ characterX ,setCharacterX] = useState(0)
   const [ characterY ,setCharacterY] = useState(0)
+  const [projects, setProjects] = useState([]);
   const handleMove =(e)=>{
     console.log('move')
     console.log(e.direction)
@@ -21,6 +24,18 @@ function Index() {
   const handleStop =()=>{
     console.log('stop')
   }
+  useEffect(() => {
+    const query = ref(database, "PlayerDatas");
+    return onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data)
+      if (snapshot.exists()) {
+        Object.values(data).map((project) => {
+          setProjects((projects) => [...projects, project]);
+        });
+      }
+    });
+  }, []);
   return (
     <div className='flex flex-col'>
       <div className='flex justify-center items-center flex-col h-1/2'>
