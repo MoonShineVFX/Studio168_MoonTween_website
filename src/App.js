@@ -1,10 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-
+import JoyStickHome from './Pages/Joystick'
 function App() {
   return (
-    <div className="App">
-      <div>Hello</div>
+    <div className="App overflow-hidden">
+      <JoyStickHome />
     </div>
   );
 }
