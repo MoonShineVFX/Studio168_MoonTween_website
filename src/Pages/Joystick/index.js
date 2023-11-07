@@ -29,7 +29,7 @@ function Index() {
       </div>
       <div className='flex flex-col justify-center items-center h-1/2 my-4'>
         <div className=' rounded-full bg-slate-500 w-14 h-14 p-2 flex justify-center items-center text-white'>button</div>
-        <Joystick size={200} sticky={true} baseColor="red" stickColor="blue" move={handleMove} stop={handleStop}></Joystick>
+        <Joystick size={200} sticky={false} baseColor="red" stickColor="blue" move={handleMove} stop={handleStop}></Joystick>
       </div>
       <div className='test'>
         測試數據：
