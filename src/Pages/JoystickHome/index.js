@@ -93,9 +93,15 @@ function Index({title}) {
   }, []);
   const init=async()=>{
     try {
-      await liff.init({liffId: liffID}) 
-      const user = liff.getDecodedIDToken();
-      setLineUserData(user)
+      await liff.init({liffId: liffID}).then(()=>{
+        if (!liff.isLoggedIn()){
+          liff.login()
+        }else{
+          const user = liff.getDecodedIDToken();
+          setLineUserData(user)
+        }
+      })
+
     } catch (error) {
       console.log(error)
     }
