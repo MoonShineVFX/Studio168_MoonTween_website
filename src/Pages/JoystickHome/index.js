@@ -21,6 +21,8 @@ function Index({title}) {
     console.log('move')
     console.log(e.direction)
     setMove(e.direction)
+    setMoveX(e.x)   
+    setMoveY(e.y)
     if(e.direction === 'RIGHT'){
       setCharacterX(characterX+1)
       // writeUserX(moveX+1)
@@ -119,11 +121,12 @@ function Index({title}) {
           </div>
 
         </div>
-        <div className='test fixed top-1/3 left-0'>
+        <div className='test fixed top-1/3 left-0 pointer-events-none'>
           測試數據：
           <div>1. 移動方向 {move}</div>
-          <div>2. 角色位置X {characterX}</div>
-          <div>3. 角色位置Y {characterY}</div>
+          <div>2. 移動位置X {moveX}</div>
+          <div>3. 移動位置Y {moveY}</div>
+
           {projects &&
             (
               <div className='mt-10'>
