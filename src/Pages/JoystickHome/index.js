@@ -111,11 +111,11 @@ function Index({title}) {
     });
   }
 
-  if(!mail) {
-    return <div className='flex flex-col justify-center items-center py-10'>
-      沒有讀取到資料或查無
-    </div>
-  }
+  // if(!mail) {
+  //   return <div className='flex flex-col justify-center items-center py-10'>
+  //     沒有讀取到資料或查無
+  //   </div>
+  // }
 
 
 
