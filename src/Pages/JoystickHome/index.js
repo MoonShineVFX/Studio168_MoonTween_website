@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import liff from '@line/liff';
 import Header from '../../Components/Header';
 import { Link,useLocation,useNavigate } from 'react-router-dom';
 import { Joystick } from 'react-joystick-component';
@@ -91,18 +92,6 @@ function Index({title}) {
     }
 
   }, []);
-
-  if(!mail) {
-    return <div className='flex flex-col justify-center items-center py-10'>
-      沒有讀取到資料或查無
-    </div>
-  }
-  const writeUserXY = (x,y)=>{
-    update(ref(database, `PlayerDatas/${currentUserId}`), {
-      DeltaX: x,
-      DeltaY: y
-    });
-  }
   const init=async()=>{
     try {
       await liff.init({liffId: liffID}) 
@@ -112,9 +101,23 @@ function Index({title}) {
       console.log(error)
     }
   }
-  useEffect( ()=>{
+  useEffect(()=>{
     init()
   },[])
+  const writeUserXY = (x,y)=>{
+    update(ref(database, `PlayerDatas/${currentUserId}`), {
+      DeltaX: x,
+      DeltaY: y
+    });
+  }
+
+  if(!mail) {
+    return <div className='flex flex-col justify-center items-center py-10'>
+      沒有讀取到資料或查無
+    </div>
+  }
+
+
 
 
   return (
