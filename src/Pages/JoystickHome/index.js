@@ -4,11 +4,18 @@ import { Link,useLocation,useNavigate } from 'react-router-dom';
 import { Joystick } from 'react-joystick-component';
 import { database } from '../../firebase';
 import { onValue, ref,child, push, update,set,orderByChild,equalTo,query } from "firebase/database";
+import PassportModal from '../PassportHome';
 function Index({title}) {
+  const liffID = process.env.REACT_APP_LIFF_JOYSTICK_ID
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const mail = searchParams.get('mail');
   const navigate = useNavigate();
+  const [appStatus , setAppStatus] = useState({
+    status:"default",
+    msg:""
+  })
+  console.log(appStatus)
   const [ move ,setMove] = useState('')
   const [ moveX ,setMoveX] = useState(0)
   const [ moveY ,setMoveY] = useState(0)
@@ -17,34 +24,47 @@ function Index({title}) {
   const [projects, setProjects] = useState([]);
   const [currentUserId, setCurrentUserId] = useState('')
   const [currentUser, setCurrentUser] = useState({})
+  const [lineUserData, setLineUserData] = useState({})
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const handleMove =(e)=>{
-    console.log('move')
     setMoveX(e.x)   
     setMoveY(e.y)
     writeUserXY(e.x,e.y)
-    if(e.direction === 'RIGHT'){
-      // setCharacterX(characterX+1) 
-      // writeUserX(moveX+1)
-    }else if(e.direction === 'LEFT'){
-      // setCharacterX(characterX-1)
-      // writeUserX(moveX-1)
-    }else if(e.direction === 'FORWARD'){
-      // setCharacterY(characterY-1)
-      // writeUserY(moveY-1)
-    }else if(e.direction === 'BACKWARD'){
-      // setCharacterY(characterY+1)
-      // writeUserY(moveY+1)
-    }
   }
   const handleStop =()=>{
-    console.log('stop')
     setMoveX(0)   
     setMoveY(0)
     writeUserXY(0,0)
-    // setCharacterX(0)
-    // setCharacterY(0)
-  }
 
+  }
+  useEffect(() => {
+    let timer;
+    if (isModalOpen) {
+      setIsTimerRunning(true);
+      timer = setTimeout(() => {
+        // 在三秒后触发的操作
+        console.log('三秒计时结束');
+        setIsTimerRunning(false);
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isModalOpen]);
+  //      
+  // <Header 
+  //   title="歡迎來到數位分行" 
+  //   subtitle={`- 將<span class='text-[#61a9a5]'>通行證</span>對準掃瞄器即可將分身匯入<span class='text-[#61a9a5]'>數位分行</span> -`} 
+  // />
   useEffect(() => {
     if(mail){
       const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(mail))
@@ -52,7 +72,11 @@ function Index({title}) {
         const data = snapshot.val();
         console.log(data)
         if(!data){
-          navigate('/joystick')
+          setIsModalOpen(true)
+          setAppStatus({
+            status: "miss",
+            msg: "角色資料不存在! 請掃描以進行操作。"
+          })
           return
         }
         setCurrentUserId( Object.keys(snapshot.val())[0])
@@ -79,11 +103,24 @@ function Index({title}) {
       DeltaY: y
     });
   }
+  const init=async()=>{
+    try {
+      await liff.init({liffId: liffID}) 
+      const user = liff.getDecodedIDToken();
+      setLineUserData(user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect( ()=>{
+    init()
+  },[])
 
 
   return (
     <div>
-      <div className='fixed z-10 bottom-24 left-0 w-1/3'>
+      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} />
+      <div className='fixed z-10 bottom-24 left-0 w-1/3' onClick={handleOpenModal} >
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="" />
       </div>
       <div className='flex flex-col'>
@@ -138,12 +175,6 @@ function Index({title}) {
           }
         </div>
 
-        <div 
-          className={' fixed z-20 w-5 h-5 bg-red-700 rounded-full'}
-          style={{ transform: `translate(${characterX}px, ${characterY}px)` }}
-          >
-
-        </div>
         
       </div>
     </div>
