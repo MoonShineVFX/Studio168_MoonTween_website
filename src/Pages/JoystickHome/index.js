@@ -31,7 +31,15 @@ function Index({title}) {
     try {
       await liff.init({liffId: liffID}).then(()=>{
         if (!liff.isLoggedIn()){
-          liff.login()
+          setLineUserData({
+            name:"未知的",
+            email:"xxx@mail.com",
+            picture:"https://moonshine.b-cdn.net/msweb/studio168/user_a.png?width=200"
+          })
+          setAppStatus({
+            status: "fail",
+            msg: "請從 Line 登入此頁面，再進行操作。"
+          })
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)

@@ -46,16 +46,20 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData}) {
               通行證 PASSPORT
             </div>
             <div className='w-20 p-1 border rounded-2xl border-white mt-7'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/user_a.png" alt="" className='  rounded-2xl' />
+              <img src={lineUserData?.picture} alt="" className='  rounded-2xl' />
             </div>
+            <div className='flex flex-col justify-center items-center mt-4'>
+              <div className='text-xl tracking-wider  text-[#61a9a5] font-extrabold '>{lineUserData?.name}</div>
+              <div className='text-[#788d88] '>{lineUserData?.email}</div>
+            </div>
+
             <div 
-              className='p-4 mt-10 bg-contain bg-no-repeat w-11/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
+              className='p-3 mt-6 bg-contain bg-no-repeat w-10/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
               style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
             >
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/QR_Code_Example.svg/1200px-QR_Code_Example.svg.png" alt="" />
             </div>
-            {appStatus?.status !== 'default' && <div className='mt-3'>{appStatus?.msg}</div> }
-            {lineUserData?.sub && <div className='mt-3'>{lineUserData?.sub}{lineUserData?.name}</div> }
+            {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 '>{appStatus?.msg}</div> }
           </div>
 
         </motion.div>
