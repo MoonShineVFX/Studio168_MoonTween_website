@@ -93,7 +93,7 @@ function Index({title}) {
   // />
   useEffect(() => {
     if(mail){
-      const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(mail))
+      const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(lineUserData.email))
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
