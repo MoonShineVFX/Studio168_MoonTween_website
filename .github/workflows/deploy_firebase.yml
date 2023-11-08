@@ -17,7 +17,7 @@ jobs:
       REACT_APP_LIFF_JOYSTICK_ID: ${{secrets.LIFF_JOYSTICK_ID}}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
