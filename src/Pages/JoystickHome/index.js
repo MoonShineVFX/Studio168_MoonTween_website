@@ -128,6 +128,7 @@ function Index({title}) {
             (
               <div className='mt-10'>
                 現在的使用者：
+                <div>firebase_Key:{currentUserId}</div>
                 <div>Email:{currentUser.Email}</div>
                 <div>DeltaX:{currentUser.DeltaX}</div>
                 <div>DeltaY:{currentUser.DeltaY}</div>
