@@ -55,7 +55,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData}) {
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/QR_Code_Example.svg/1200px-QR_Code_Example.svg.png" alt="" />
             </div>
             {appStatus?.status !== 'default' && <div className='mt-3'>{appStatus?.msg}</div> }
-            {lineUserData?.sub !== 'default' && <div className='mt-3'>{lineUserData?.sub}{lineUserData?.name}</div> }
+            {lineUserData?.sub && <div className='mt-3'>{lineUserData?.sub}{lineUserData?.name}</div> }
           </div>
 
         </motion.div>
