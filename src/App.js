@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<GamePlayLayout />} > 
           <Route path="" element={<JoyStickHome />} />
-          {/* <Route path="joystick" element={<JoyStickHome />} /> */}
+          <Route path="joystick" element={<JoyStickHome />} />
         </Route>
 
       </Routes>
