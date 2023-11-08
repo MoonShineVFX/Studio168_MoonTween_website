@@ -27,6 +27,24 @@ function Index({title}) {
   const [lineUserData, setLineUserData] = useState({})
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const init=async()=>{
+    try {
+      await liff.init({liffId: liffID}).then(()=>{
+        if (!liff.isLoggedIn()){
+          liff.login()
+        }else{
+          const user = liff.getDecodedIDToken();
+          setLineUserData(user)
+        }
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(()=>{
+    init()
+  },[])
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -91,24 +109,7 @@ function Index({title}) {
     }
 
   }, []);
-  const init=async()=>{
-    try {
-      await liff.init({liffId: liffID}).then(()=>{
-        if (!liff.isLoggedIn()){
-          liff.login()
-        }else{
-          const user = liff.getDecodedIDToken();
-          setLineUserData(user)
-        }
-      })
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(()=>{
-    init()
-  },[])
   const writeUserXY = (x,y)=>{
     update(ref(database, `PlayerDatas/${currentUserId}`), {
       DeltaX: x,
