@@ -16,7 +16,6 @@ function Index({title}) {
     status:"default",
     msg:""
   })
-  console.log(appStatus)
   const [ move ,setMove] = useState('')
   const [ moveX ,setMoveX] = useState(0)
   const [ moveY ,setMoveY] = useState(0)
@@ -124,7 +123,7 @@ function Index({title}) {
     <div>
       <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} />
       <div className='fixed z-10 bottom-24 left-0 w-1/3' onClick={handleOpenModal} >
-        <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="" />
+        <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>
       <div className='flex flex-col'>
         <Header 
@@ -134,17 +133,17 @@ function Index({title}) {
         <div className='flex flex-col justify-center items-center h-1/2 my-4'>
           <div className='mt-12 -mb-8 relative w-3/5'> 
             <div className='w-24 ml-14 mb-3'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="" />
+              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
             <button 
               className=' w-24 flex justify-center items-center text-white '
             >
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="" />
+              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
             </button>
           </div>
           <div className=' relative '> 
             <div className='w-24 ml-auto mb-3'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_text.png" alt="" />
+              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_text.png" alt="滑動控制" />
             </div> 
             <Joystick 
               size={250} 
