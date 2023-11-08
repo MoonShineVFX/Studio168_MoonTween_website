@@ -23,17 +23,18 @@ function Index({title}) {
     setMove(e.direction)
     setMoveX(e.x)   
     setMoveY(e.y)
+    writeUserXY(e.x,e.y)
     if(e.direction === 'RIGHT'){
-      setCharacterX(characterX+1)
+      // setCharacterX(characterX+1) 
       // writeUserX(moveX+1)
     }else if(e.direction === 'LEFT'){
-      setCharacterX(characterX-1)
+      // setCharacterX(characterX-1)
       // writeUserX(moveX-1)
     }else if(e.direction === 'FORWARD'){
-      setCharacterY(characterY-1)
+      // setCharacterY(characterY-1)
       // writeUserY(moveY-1)
     }else if(e.direction === 'BACKWARD'){
-      setCharacterY(characterY+1)
+      // setCharacterY(characterY+1)
       // writeUserY(moveY+1)
     }
   }
@@ -71,16 +72,13 @@ function Index({title}) {
       沒有讀取到資料或查無
     </div>
   }
-  const writeUserX = (x)=>{
+  const writeUserXY = (x,y)=>{
     update(ref(database, `PlayerDatas/${currentUserId}`), {
       DeltaX: x,
+      DeltaY: y
     });
   }
-  const writeUserY = (y)=>{
-    update(ref(database, `PlayerDatas/${currentUserId}`), {
-      DeltaY: y,
-    });
-  }
+
 
   return (
     <div>
@@ -99,7 +97,6 @@ function Index({title}) {
             </div> 
             <button 
               className=' w-24 flex justify-center items-center text-white '
-              onClick={()=>writeUserX(0)}
             >
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="" />
             </button>
