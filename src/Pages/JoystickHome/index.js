@@ -92,8 +92,8 @@ function Index({title}) {
   //   subtitle={`- 將<span class='text-[#61a9a5]'>通行證</span>對準掃瞄器即可將分身匯入<span class='text-[#61a9a5]'>數位分行</span> -`} 
   // />
   useEffect(() => {
-    if(mail){
-      const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(lineUserData.email))
+    if(lineUserData){
+      const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(lineUserData?.email))
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
@@ -116,7 +116,7 @@ function Index({title}) {
       })
     }
 
-  }, []);
+  }, [lineUserData]);
 
   const writeUserXY = (x,y)=>{
     update(ref(database, `PlayerDatas/${currentUserId}`), {
