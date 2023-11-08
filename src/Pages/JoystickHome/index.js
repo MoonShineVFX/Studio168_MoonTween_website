@@ -19,8 +19,6 @@ function Index({title}) {
   const [currentUser, setCurrentUser] = useState({})
   const handleMove =(e)=>{
     console.log('move')
-    console.log(e.direction)
-    setMove(e.direction)
     setMoveX(e.x)   
     setMoveY(e.y)
     writeUserXY(e.x,e.y)
@@ -40,6 +38,9 @@ function Index({title}) {
   }
   const handleStop =()=>{
     console.log('stop')
+    setMoveX(0)   
+    setMoveY(0)
+    writeUserXY(0,0)
     // setCharacterX(0)
     // setCharacterY(0)
   }
