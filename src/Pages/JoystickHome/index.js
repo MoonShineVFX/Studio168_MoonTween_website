@@ -10,7 +10,7 @@ function Index({title}) {
   const liffID = process.env.REACT_APP_LIFF_JOYSTICK_ID
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const mail = searchParams.get('mail');
+
   const navigate = useNavigate();
   const [appStatus , setAppStatus] = useState({
     status:"default",
@@ -25,6 +25,7 @@ function Index({title}) {
   const [currentUserId, setCurrentUserId] = useState('')
   const [currentUser, setCurrentUser] = useState({})
   const [lineUserData, setLineUserData] = useState({})
+  const mail = searchParams.get('mail') ?  searchParams.get('mail') :  lineUserData.email ;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const init=async()=>{
@@ -92,8 +93,8 @@ function Index({title}) {
   //   subtitle={`- 將<span class='text-[#61a9a5]'>通行證</span>對準掃瞄器即可將分身匯入<span class='text-[#61a9a5]'>數位分行</span> -`} 
   // />
   useEffect(() => {
-    if(lineUserData){
-      const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(lineUserData?.email))
+    if(mail){
+      const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(mail))
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
