@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../../Components/Header'
+import { Link,useLocation } from 'react-router-dom';
+
 function Passport() {
   return (
     <div>
@@ -12,9 +14,9 @@ function Passport() {
           className='w-10/12 mx-auto bg-contain aspect-[992/1676] bg-no-repeat bg-center relative'
           style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_bg.png?width=450'})`}}
         >
-          <div className=' absolute right-0 p-3'>
+          <Link to="/joeystick?id=" className=' absolute right-0 p-3'>
             <img src="https://moonshine.b-cdn.net/msweb/studio168/passport_btn_close.png?width=26" alt="" className=' ' />
-          </div>
+          </Link>
           <div className='flex flex-col justify-center items-center mt-[85px]'>
             <div className='w-20 p-1'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/user_a.png" alt="" className='  rounded-2xl' />

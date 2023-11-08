@@ -7,8 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<GamePlayLayout />} > 
-         <Route path="" element={<Passporthome />} />
-
+          <Route path="" element={<Passporthome />} />
           <Route path="joystick" element={<JoyStickHome />} />
         </Route>
 
