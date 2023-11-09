@@ -3,7 +3,7 @@ import Header from '../../Components/Header'
 import { Link,useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import QRCode from "react-qr-code";
-function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptUid}) {
+function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptUid,encryptResult}) {
   const modalVariants = {
     hidden: {
       opacity: 0,
@@ -63,7 +63,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
               <QRCode
                 size={256}
                 style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                value={lineUserData && encryptUid(lineUserData.sub)}
+                value={lineUserData && encryptResult}
                 viewBox={`0 0 256 256`}
               />
             </div> }
