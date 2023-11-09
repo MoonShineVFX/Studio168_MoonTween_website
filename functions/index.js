@@ -5,7 +5,7 @@ admin.initializeApp();
 
 const algorithm = "aes-256-cbc";
 const key = "aaaaBBBBccccDDDDeeeeFFFFggggHHHH";
-const getDate=()=> {
+const getADate=()=> {
 	var d = new Date(),
 	month = '' + (d.getMonth() + 1),
 	day = '' + d.getDate(),
@@ -18,7 +18,7 @@ const getDate=()=> {
 	
 	return year+month+day+year+month+day
 }
-let iv = getDate();
+let iv = getADate();
 
 
 exports.encrypt = functions.https.onCall((text) => {
