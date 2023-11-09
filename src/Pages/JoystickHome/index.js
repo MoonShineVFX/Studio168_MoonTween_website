@@ -76,7 +76,7 @@ function Index({title}) {
   const handleInteract =()=>{
     setIsInteract(1)
     writeUserInteract(1)
-    
+
     setTimeout(() => {
       setIsInteract(0);
       writeUserInteract(0)
@@ -137,7 +137,7 @@ function Index({title}) {
   }
   const writeUserInteract=(num)=>{
     update(ref(database, `PlayerDatas/${currentUserId}`), {
-      isInteract:num
+      IsInteract:num
     });
   }
 
