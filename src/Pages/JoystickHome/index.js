@@ -28,6 +28,7 @@ function Index({title}) {
   const mail = searchParams.get('mail') ?  searchParams.get('mail') :  lineUserData.email ;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [isInteract, setIsInteract] = useState(0);
   const init=async()=>{
     try {
       await liff.init({liffId: liffID}).then(()=>{
@@ -71,6 +72,15 @@ function Index({title}) {
     setMoveY(0)
     writeUserXY(0,0)
 
+  }
+  const handleInteract =()=>{
+    setIsInteract(1)
+    writeUserInteract(1)
+    
+    setTimeout(() => {
+      setIsInteract(0);
+      writeUserInteract(0)
+    }, 500);
   }
   useEffect(() => {
     let timer;
@@ -125,6 +135,11 @@ function Index({title}) {
       DeltaY: y
     });
   }
+  const writeUserInteract=(num)=>{
+    update(ref(database, `PlayerDatas/${currentUserId}`), {
+      isInteract:num
+    });
+  }
 
   // if(!mail) {
   //   return <div className='flex flex-col justify-center items-center py-10'>
@@ -153,6 +168,7 @@ function Index({title}) {
             </div> 
             <button 
               className=' w-24 flex justify-center items-center text-white '
+              onClick={handleInteract}
             >
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
             </button>
