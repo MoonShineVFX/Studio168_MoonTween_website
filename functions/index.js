@@ -5,15 +5,6 @@ admin.initializeApp();
 
 const algorithm = "aes-256-cbc";
 const key = "aaaaBBBBccccDDDDeeeeFFFFggggHHHH";
-let iv = getDate();
-exports.encrypt = functions.https.onCall((text) => {
-  let cipher = crypto.createCipheriv(algorithm, key, iv);
-  console.log(iv,key)
-  let encrypted = cipher.update(text, "utf8", "base64");
-  return encrypted += cipher.final("base64");
-});
-
-
 const getDate=()=> {
 	var d = new Date(),
 	month = '' + (d.getMonth() + 1),
@@ -27,3 +18,14 @@ const getDate=()=> {
 	
 	return year+month+day+year+month+day
 }
+let iv = getDate();
+
+
+exports.encrypt = functions.https.onCall((text) => {
+  let cipher = crypto.createCipheriv(algorithm, key, iv);
+  console.log(iv,key)
+  let encrypted = cipher.update(text, "utf8", "base64");
+  return encrypted += cipher.final("base64");
+});
+
+
