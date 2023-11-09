@@ -6,6 +6,7 @@ import { Joystick } from 'react-joystick-component';
 import { database } from '../../firebase';
 import { onValue, ref,child, push, update,set,orderByChild,equalTo,query } from "firebase/database";
 import PassportModal from '../PassportHome';
+import { httpsCallable } from "firebase/functions";
 function Index({title}) {
   const liffID = process.env.REACT_APP_LIFF_JOYSTICK_ID
   const location = useLocation();
@@ -146,6 +147,19 @@ function Index({title}) {
   //     沒有讀取到資料或查無
   //   </div>
   // }
+  const test = async()=>{
+    console.log('test click')
+    try {
+      const encryptFunction = httpsCallable(functions, "encrypt");
+      const result = await encryptFunction('12345')
+      console.log('go')
+      console.log(result)
+      console.log('end')
+
+    } catch (error) {
+      console.log(error) 
+    }
+  }
 
 
 
@@ -162,6 +176,7 @@ function Index({title}) {
           subtitle={`- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -`} 
         />
         <div className='flex flex-col justify-center items-center h-1/2 my-4'>
+          
           <div className='mt-12 -mb-8 relative w-3/5'> 
             <div className='w-24 ml-14 mb-3'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
@@ -207,6 +222,7 @@ function Index({title}) {
               </div>
             )
           }
+          <button onClick={test}>testBtn</button>
         </div>
 
         

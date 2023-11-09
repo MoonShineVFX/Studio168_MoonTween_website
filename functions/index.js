@@ -1,11 +1,13 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const { FieldValue } = require("firebase-admin/firestore");
-
+const crypto = require('crypto');
 admin.initializeApp();
 
-exports.getDate = functions.https.onCall(() => {
-  var d = new Date(),
+const algorithm = "aes-256-cbc";
+const key = "aaaaBBBBccccDDDDeeeeFFFFggggHHHH";
+let iv = getDate();
+function getDate() {
+	var d = new Date(),
 	month = '' + (d.getMonth() + 1),
 	day = '' + d.getDate(),
 	year = d.getFullYear();
@@ -16,4 +18,11 @@ exports.getDate = functions.https.onCall(() => {
 	day = '0' + day;
 	
 	return year+month+day+year+month+day
+}
+
+exports.encrypt = functions.https.onCall((text) => {
+    let cipher = crypto.createCipheriv(algorithm, key, iv);
+    console.log(iv,key)
+    let encrypted = cipher.update(text, "utf8", "base64");
+    return encrypted += cipher.final("base64");
 });
