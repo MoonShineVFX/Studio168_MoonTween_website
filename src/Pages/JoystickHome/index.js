@@ -6,6 +6,7 @@ import { Joystick } from 'react-joystick-component';
 import { database } from '../../firebase';
 import { onValue, ref,child, push, update,set,orderByChild,equalTo,query } from "firebase/database";
 import PassportModal from '../PassportHome';
+import { functions } from "./firebase";
 import { httpsCallable } from "firebase/functions";
 function Index({title}) {
   const liffID = process.env.REACT_APP_LIFF_JOYSTICK_ID
