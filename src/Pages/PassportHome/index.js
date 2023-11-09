@@ -2,7 +2,8 @@ import React from 'react'
 import Header from '../../Components/Header'
 import { Link,useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData}) {
+import QRCode from "react-qr-code";
+function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptUid}) {
   const modalVariants = {
     hidden: {
       opacity: 0,
@@ -52,13 +53,20 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData}) {
               <div className='text-xl tracking-wider  text-[#61a9a5] font-extrabold '>{lineUserData?.name}</div>
               <div className='text-[#788d88] '>{lineUserData?.email}</div>
             </div>
-
+            
+            
+            {lineUserData.sub !== 'none' &&
             <div 
               className='p-3 mt-6 bg-contain bg-no-repeat w-10/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
               style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
             >
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/QR_Code_Example.svg/1200px-QR_Code_Example.svg.png" alt="" />
-            </div>
+              <QRCode
+                size={256}
+                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                value={lineUserData && encryptUid(lineUserData.sub)}
+                viewBox={`0 0 256 256`}
+              />
+            </div> }
             {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 '>{appStatus?.msg}</div> }
           </div>
 
