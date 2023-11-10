@@ -96,7 +96,7 @@ function Index({title}) {
       interval = setInterval(() => {
         fetchUserData()
 
-        if (currentUser?.Email === lineUserData?.email) {
+        if (currentUser?.Email === lineUserData?.email || currentUser.Status!== 'ready') {
           // 逻辑...
           console.log('Emails 相同！');
           setIsModalOpen(false)
