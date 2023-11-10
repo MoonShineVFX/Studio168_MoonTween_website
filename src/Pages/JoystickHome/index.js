@@ -30,7 +30,7 @@ function Index({title}) {
   const mail = searchParams.get('mail') ?  searchParams.get('mail') :  lineUserData.email ;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const [intervalId, setIntervalId] = useState(null);
+
   const [isInteract, setIsInteract] = useState(0);
   const init=async()=>{
     try {
@@ -88,27 +88,27 @@ function Index({title}) {
       writeUserInteract(0)
     }, 500);
   }
-  useEffect(() => {
-    if (isModalOpen && lineUserData.email !== currentUser.Email) {
-      setIsTimerRunning(true);
-      setAppStatus({
-        status: "scan",
-        msg: "請靠近機台進行掃描，並等待資料建立。"
-      })
-      const id = setInterval(() => {
-        // 每三秒执行的操作
-        console.log('每三秒执行一次的操作');
-        fetchUserData()
-      }, 3000);
-      setIntervalId(id);
-    }else{
-      clearInterval(intervalId);
-    }
 
+
+  useEffect(() => {
+    let interval;
+    if (isModalOpen) {
+      interval = setInterval(() => {
+        fetchUserData()
+
+        if (currentUser?.Email === lineUserData?.email) {
+          // 逻辑...
+          console.log('Emails 相同！');
+          setIsModalOpen(false)
+        } else {
+          console.log('Emails 不同！');
+        }
+      }, 3000);
+    }
     return () => {
-      clearInterval(intervalId);
+      clearInterval(interval);
     };
-  }, [isModalOpen,lineUserData]);
+  }, [isModalOpen,currentUser,lineUserData]);
   //      
   // <Header 
   //   title="歡迎來到數位分行" 
@@ -134,6 +134,11 @@ function Index({title}) {
           var value = childSnapshot.val();
           console.log(value)
           setCurrentUser(value)
+          if(value.Status === 'ready')
+          setAppStatus({
+            status: "ready",
+            msg: "建立完成"
+          })
 
         })
        

@@ -36,7 +36,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
           variants={modalVariants}
           style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_bg.png?width=400'})`}}
         >
-          {currentUser?.Status === 'done' && 
+          {currentUser?.Status === 'ready' && 
             <div onClick={onClose}  className=' absolute right-0 p-3'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/passport_btn_close.png?width=26" alt="" className=' ' />
             </div>
