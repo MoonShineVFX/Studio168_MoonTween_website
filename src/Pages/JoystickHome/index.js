@@ -46,7 +46,7 @@ function Index({title}) {
             status: "fail",
             msg: "請從 Line 登入此頁面，再進行操作。"
           })
-          liff.login()
+          // liff.login()
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
@@ -244,9 +244,12 @@ function Index({title}) {
         </div>
         <div className='test fixed top-1/3 left-0 pointer-events-none'>
           測試數據：
+          <div>控制器</div>
           <div>1. 移動方向 {move}</div>
           <div>2. 移動位置X {moveX}</div>
           <div>3. 移動位置Y {moveY}</div>
+          <div>4. 互動按鈕 {isInteract}</div>
+          
 
           {projects &&
             (
@@ -256,6 +259,7 @@ function Index({title}) {
                 <div>Email:{currentUser.Email}</div>
                 <div>DeltaX:{currentUser.DeltaX}</div>
                 <div>DeltaY:{currentUser.DeltaY}</div>
+                <div>IsInteract:{currentUser.IsInteract}</div>
               </div>
             )
           }
