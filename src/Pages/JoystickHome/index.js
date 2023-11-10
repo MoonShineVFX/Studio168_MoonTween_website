@@ -131,29 +131,29 @@ function Index({title}) {
           })
           return
         }
-        if(data.Status === 'process'){
-          setIsModalOpen(true)
-          setAppStatus({
-            status: "process",
-            msg: "角色資料創建中"
-          })
-        }
+
         setCurrentUserId( Object.keys(snapshot.val())[0])
         // 
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
           console.log(value)
           setCurrentUser(value)
-          if(value.Status === 'process')
-          setAppStatus({
-            status: "process",
-            msg: "角色資料創建中"
-          })
-          if(value.Status === 'ready')
-          setAppStatus({
-            status: "ready",
-            msg: "建立完成"
-          })
+          if(value.Status === 'processing'){
+            setIsModalOpen(true)
+            setAppStatus({
+              status: "processing",
+              msg: "角色資料創建中"
+            })
+          }
+
+          if(value.Status === 'ready'){
+            setIsModalOpen(false)
+            setAppStatus({
+              status: "ready",
+              msg: "建立完成"
+            })
+          }
+
 
         })
        
