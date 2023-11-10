@@ -88,7 +88,7 @@ function Index({title}) {
     }, 500);
   }
   useEffect(() => {
-    if (isModalOpen && lineUserData.email === currentUser.Email) {
+    if (isModalOpen && lineUserData.email !== currentUser.Email) {
       setIsTimerRunning(true);
       setAppStatus({
         status: "scan",
