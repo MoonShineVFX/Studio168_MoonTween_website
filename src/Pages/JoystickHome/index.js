@@ -97,7 +97,9 @@ function Index({title}) {
         fetchUserData()
 
         if (currentUser?.Email === lineUserData?.email && currentUser.Status === 'ready') {
-          // 逻辑...
+          
+          console.log(currentUser?.Email)
+          console.log(lineUserData?.email)
           console.log('Emails 相同！');
           setIsModalOpen(false)
         } else {
@@ -120,14 +122,7 @@ function Index({title}) {
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
-        if(data.Status !== 'ready'){
-          setIsModalOpen(true)
-          setAppStatus({
-            status: "process",
-            msg: "角色資料創建中"
-          })
-          return
-        }
+
         if(!data){
           setIsModalOpen(true)
           setAppStatus({
@@ -135,6 +130,13 @@ function Index({title}) {
             msg: "角色資料不存在! 請掃描以進行操作。"
           })
           return
+        }
+        if(data.Status !== 'ready'){
+          setIsModalOpen(true)
+          setAppStatus({
+            status: "process",
+            msg: "角色資料創建中"
+          })
         }
         setCurrentUserId( Object.keys(snapshot.val())[0])
         // 
