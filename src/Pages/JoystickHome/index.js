@@ -96,7 +96,7 @@ function Index({title}) {
       interval = setInterval(() => {
         fetchUserData()
 
-        if (currentUser?.Email === lineUserData?.email || currentUser.Status === 'ready') {
+        if (currentUser?.Email === lineUserData?.email && currentUser.Status === 'ready') {
           // 逻辑...
           console.log('Emails 相同！');
           setIsModalOpen(false)
@@ -120,6 +120,14 @@ function Index({title}) {
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
+        if(data.Status !== 'ready'){
+          setIsModalOpen(true)
+          setAppStatus({
+            status: "process",
+            msg: "角色資料創建中"
+          })
+          return
+        }
         if(!data){
           setIsModalOpen(true)
           setAppStatus({
