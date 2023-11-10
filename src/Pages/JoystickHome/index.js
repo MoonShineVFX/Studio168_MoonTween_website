@@ -30,6 +30,7 @@ function Index({title}) {
   const mail = searchParams.get('mail') ?  searchParams.get('mail') :  lineUserData.email ;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
   const [isInteract, setIsInteract] = useState(0);
   const init=async()=>{
     try {
@@ -87,18 +88,24 @@ function Index({title}) {
     }, 500);
   }
   useEffect(() => {
-    let timer;
     if (isModalOpen) {
       setIsTimerRunning(true);
-      timer = setTimeout(() => {
-        // 在三秒后触发的操作
-        console.log('三秒计时结束');
-        setIsTimerRunning(false);
+      setAppStatus({
+        status: "scan",
+        msg: "請靠近機台進行掃描，並等待資料建立。"
+      })
+      const id = setInterval(() => {
+        // 每三秒执行的操作
+        console.log('每三秒执行一次的操作');
+        fetchUserData()
       }, 3000);
+      setIntervalId(id);
+    }else{
+      clearInterval(intervalId);
     }
 
     return () => {
-      clearTimeout(timer);
+      clearInterval(intervalId);
     };
   }, [isModalOpen]);
   //      
@@ -106,7 +113,7 @@ function Index({title}) {
   //   title="歡迎來到數位分行" 
   //   subtitle={`- 將<span class='text-[#61a9a5]'>通行證</span>對準掃瞄器即可將分身匯入<span class='text-[#61a9a5]'>數位分行</span> -`} 
   // />
-  useEffect(() => {
+  const fetchUserData = () =>{
     if(mail){
       const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(mail))
       return onValue(userData, (snapshot) =>{
@@ -131,6 +138,9 @@ function Index({title}) {
        
       })
     }
+  }
+  useEffect(() => {
+    fetchUserData()
 
   }, [lineUserData]);
 
