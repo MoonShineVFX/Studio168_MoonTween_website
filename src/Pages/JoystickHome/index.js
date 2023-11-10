@@ -88,7 +88,7 @@ function Index({title}) {
     }, 500);
   }
   useEffect(() => {
-    if (isModalOpen) {
+    if (isModalOpen && lineUserData.email === currentUser.Email) {
       setIsTimerRunning(true);
       setAppStatus({
         status: "scan",
@@ -107,7 +107,7 @@ function Index({title}) {
     return () => {
       clearInterval(intervalId);
     };
-  }, [isModalOpen]);
+  }, [isModalOpen,lineUserData]);
   //      
   // <Header 
   //   title="歡迎來到數位分行" 

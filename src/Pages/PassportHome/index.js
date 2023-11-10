@@ -67,7 +67,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
                 viewBox={`0 0 256 256`}
               />
             </div> }
-            {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 '>{appStatus?.msg}</div> }
+            {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 text-sm '>{appStatus?.msg}</div> }
           </div>
 
         </motion.div>
