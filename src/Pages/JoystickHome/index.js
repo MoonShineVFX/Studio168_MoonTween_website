@@ -131,7 +131,7 @@ function Index({title}) {
           })
           return
         }
-        if(data.Status !== 'ready'){
+        if(data.Status === 'process'){
           setIsModalOpen(true)
           setAppStatus({
             status: "process",
