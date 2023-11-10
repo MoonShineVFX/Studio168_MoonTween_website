@@ -134,6 +134,11 @@ function Index({title}) {
           var value = childSnapshot.val();
           console.log(value)
           setCurrentUser(value)
+          if(value.Status === 'process')
+          setAppStatus({
+            status: "process",
+            msg: "角色資料創建中"
+          })
           if(value.Status === 'ready')
           setAppStatus({
             status: "ready",
