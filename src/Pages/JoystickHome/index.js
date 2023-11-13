@@ -242,21 +242,20 @@ function Index({title}) {
           </div>
 
         </div>
-        <div className='test fixed top-1/3 left-0 pointer-events-none'>
-          測試數據：
-          <div>控制器</div>
-          <div>1. 移動方向 {move}</div>
-          <div>2. 移動位置X {moveX}</div>
-          <div>3. 移動位置Y {moveY}</div>
-          <div>4. 互動按鈕 {isInteract}</div>
-          
+        <div className='test fixed bottom-0 left-0 pointer-events-none'>
+          <div className='hidden'>
+            測試數據：
+            <div>控制器</div>
+            <div>1. 移動方向 {move}</div>
+            <div>2. 移動位置X {moveX}</div>
+            <div>3. 移動位置Y {moveY}</div>
+            <div>4. 互動按鈕 {isInteract}</div>
+          </div>
 
           {projects &&
             (
-              <div className='mt-10'>
-                現在的使用者：
-                <div>firebase_Key:{currentUserId}</div>
-                <div>Email:{currentUser.Email}</div>
+              <div className='mt-10 flex opacity-20 text-xs'>
+                <div>{currentUser.Email}</div>
                 <div>DeltaX:{currentUser.DeltaX}</div>
                 <div>DeltaY:{currentUser.DeltaY}</div>
                 <div>IsInteract:{currentUser.IsInteract}</div>
