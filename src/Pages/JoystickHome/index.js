@@ -204,7 +204,7 @@ function Index({title}) {
   return (
     <div>
       <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} />
-      <div className='fixed z-10 bottom-24 left-0 w-1/3' onClick={handleOpenModal} >
+      <div className='fixed z-10 bottom-20 left-0 w-1/3' onClick={handleOpenModal} >
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>
       <div className='flex flex-col'>
