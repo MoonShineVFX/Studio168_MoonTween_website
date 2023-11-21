@@ -93,7 +93,7 @@ function Index({title}) {
   useEffect(() => {
     let interval;
     if (isModalOpen) {
-      
+      console.log('啟動檢查')
       interval = setInterval(() => {
         fetchUserData()
 
@@ -125,6 +125,7 @@ function Index({title}) {
         console.log(data)
 
         if(!data){
+          setCurrentUser({})
           setIsModalOpen(true)
           setAppStatus({
             status: "miss",
