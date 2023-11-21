@@ -46,7 +46,7 @@ function Index({title}) {
             status: "fail",
             msg: "請從 Line 登入此頁面，再進行操作。"
           })
-          liff.login()
+          // liff.login()
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
@@ -93,18 +93,18 @@ function Index({title}) {
   useEffect(() => {
     let interval;
     if (isModalOpen) {
-      console.log('啟動檢查')
+      // console.log('啟動檢查')
       interval = setInterval(() => {
         fetchUserData()
 
         if (currentUser?.Email === lineUserData?.email && currentUser.Status === 'ready') {
-          console.log(currentUser?.Email)
-          console.log(lineUserData?.email)
-          console.log('Emails 相同！');
+          // console.log(currentUser?.Email)
+          // console.log(lineUserData?.email)
+          console.log('Email相同 and 狀態 ready');
           setIsModalOpen(false)
         } else {
           setIsModalOpen(true)
-          console.log('Emails 不同！');
+          console.log('Email不同 or 狀態非ready');
         }
       }, 3000);
     }
@@ -138,7 +138,7 @@ function Index({title}) {
         // 
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
-          console.log(value)
+          // console.log(value)
           setCurrentUser(value)
           if(value.Status === 'processing'){
             setIsModalOpen(true)
