@@ -103,6 +103,7 @@ function Index({title}) {
           console.log('Emails 相同！');
           setIsModalOpen(false)
         } else {
+          setIsModalOpen(true)
           console.log('Emails 不同！');
         }
       }, 3000);
