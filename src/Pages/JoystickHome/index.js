@@ -93,11 +93,11 @@ function Index({title}) {
   useEffect(() => {
     let interval;
     if (isModalOpen) {
+      
       interval = setInterval(() => {
         fetchUserData()
 
         if (currentUser?.Email === lineUserData?.email && currentUser.Status === 'ready') {
-          
           console.log(currentUser?.Email)
           console.log(lineUserData?.email)
           console.log('Emails 相同！');
