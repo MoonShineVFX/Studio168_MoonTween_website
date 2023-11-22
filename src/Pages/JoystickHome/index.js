@@ -205,7 +205,7 @@ function Index({title}) {
 
   return (
     <div>
-      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} />
+      <PassportModal isOpen={!isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} />
       <div className='fixed z-10 bottom-10 left-0 w-1/3' onClick={handleOpenModal} >
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>
@@ -214,9 +214,9 @@ function Index({title}) {
           title="數位分身控制器" 
           subtitle={`- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -`} 
         />
-        <div className='flex flex-col justify-center items-center h-1/2 my-4'>
+        <div className='flex flex-col justify-center items-center h-1/2 my-2'>
           
-          <div className='mt-12 -mb-8 relative w-3/5'> 
+          <div className='mt-8 -mb-8 relative w-3/5'> 
             <div className='w-24 ml-14 mb-3'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
