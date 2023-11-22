@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-  /* -webkit-overflow-scrolling: touch; */
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: none;
   width: 100%;
   position: fixed;
@@ -11,7 +11,9 @@ body{
   left: 0;
   bottom: -30px;
   z-index: -1;
-  /* transform: translate3d(0,0,0);   */
+  transform: translate3d(0,0,0);  
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 *{
