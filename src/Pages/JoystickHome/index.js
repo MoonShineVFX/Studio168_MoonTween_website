@@ -221,7 +221,7 @@ function Index({title}) {
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
             <button 
-              className=' w-24 flex justify-center items-center text-white '
+              className=' w-24 flex justify-center items-center text-white transform active:scale-75 transition-transform outline-none'
               onClick={handleInteract}
             >
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
