@@ -221,7 +221,7 @@ function Index({title}) {
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
             <button 
-              className=' w-24 flex justify-center items-center text-white transform active:scale-75 transition-transform outline-none'
+              className=' w-32 flex justify-center items-center text-white transform active:scale-75 transition-transform outline-none'
               onClick={handleInteract}
             >
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
@@ -236,7 +236,7 @@ function Index({title}) {
               sticky={false} 
               baseImage="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png"
               stickColor="#62a9a5" 
-              stickSize={55}
+              stickSize={125}
               move={handleMove} 
               stop={handleStop}>
               
