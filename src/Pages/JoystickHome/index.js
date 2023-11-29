@@ -205,7 +205,7 @@ function Index({title}) {
 
   return (
     <div>
-      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} />
+      <PassportModal isOpen={!isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} />
       <div className='fixed z-30 bottom-10 left-0 w-1/3' onClick={handleOpenModal} >
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>
@@ -228,19 +228,25 @@ function Index({title}) {
             </button>
           </div>
           <div className=' relative '> 
-            <div className='w-24 ml-auto mb-3'>
+            <div className='w-24 ml-auto mb-12'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_text.png" alt="滑動控制" />
             </div> 
-            <Joystick 
-              size={270} 
-              sticky={false} 
-              baseImage="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png"
-              stickColor="#62a9a5" 
-              stickSize={125}
-              move={handleMove} 
-              stop={handleStop}>
+            <div className=' relative z-10'>
+              <Joystick 
+                className=" relative z-10"
+                size={200} 
+                sticky={false} 
+                baseColor="#00000000"
+                stickColor="#62a9a5" 
+                stickSize={100}
+                move={handleMove} 
+                stop={handleStop}>
               
-            </Joystick>
+                
+              </Joystick>
+              <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[150%]'> <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png" alt="" /></div>
+            </div>
+
           </div>
 
         </div>
