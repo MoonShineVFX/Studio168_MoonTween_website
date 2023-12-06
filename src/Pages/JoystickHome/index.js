@@ -227,7 +227,7 @@ function Index({title}) {
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
             </button>
           </div>
-          <div className=' relative -mt-10 '> 
+          <div className=' relative -mt-14 '> 
             <div className='w-28 ml-auto -mr-20  mb-20'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_Drag_text.png" alt="滑動控制" />
             </div> 
