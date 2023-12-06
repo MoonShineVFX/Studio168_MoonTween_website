@@ -216,35 +216,35 @@ function Index({title}) {
         />
         <div className='flex flex-col justify-center items-center h-1/2 my-2'>
           
-          <div className='mt-8 -mb-8 relative w-3/5'> 
-            <div className='w-24 ml-14 mb-3'>
+          <div className='mt-8 -mb- relative w-3/5'> 
+            <div className='w-28 ml-32 mb-2'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
             <button 
-              className=' w-32 flex justify-center items-center text-white transform active:scale-75 transition-transform outline-none'
+              className=' w-36 flex justify-center items-center text-white transform active:scale-75 transition-transform outline-none'
               onClick={handleInteract}
             >
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
             </button>
           </div>
-          <div className=' relative '> 
-            <div className='w-24 ml-auto mb-12'>
+          <div className=' relative -mt-10 '> 
+            <div className='w-28 ml-auto -mr-14  mb-20'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_text.png" alt="滑動控制" />
             </div> 
             <div className=' relative z-10'>
               <Joystick 
                 className=" relative z-10"
-                size={200} 
+                size={160} 
                 sticky={false} 
                 baseColor="#00000000"
                 stickColor="#62a9a5" 
-                stickSize={100}
+                stickSize={120}
                 move={handleMove} 
                 stop={handleStop}>
               
                 
               </Joystick>
-              <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[150%]'> <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png" alt="" /></div>
+              <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[165%]'> <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png" alt="" /></div>
             </div>
 
           </div>
