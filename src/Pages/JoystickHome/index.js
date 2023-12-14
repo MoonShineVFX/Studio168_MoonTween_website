@@ -212,13 +212,13 @@ function Index({title}) {
       <div className='flex flex-col'>
         {isModalOpen ?
           <Header 
-            title= "數位分身控制器" 
-            subtitle={`- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -` } 
+            title={"歡迎來到中信虛擬分行" }
+            subtitle={ `- 掃描<span class='text-[#61a9a5]'>通行證</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` } 
           />
           :
           <Header 
-            title={"歡迎來到中信虛擬分行" }
-            subtitle={ `- 掃描<span class='text-[#61a9a5]'>通行證</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` } 
+            title= "數位分身控制器" 
+            subtitle={`- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -` } 
           />
         }
 
