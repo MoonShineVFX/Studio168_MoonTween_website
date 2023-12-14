@@ -210,10 +210,19 @@ function Index({title}) {
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>
       <div className='flex flex-col'>
-        <Header 
-          title={isModalOpen ? "歡迎來到中信虛擬分行" : "數位分身控制器"  }
-          subtitle={isModalOpen  ? `- 掃描<span class='text-[#61a9a5]'>通行證</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` : `- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -`} 
-        />
+        {isModalOpen ?
+          <Header 
+            title= "數位分身控制器" 
+            subtitle={`- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -` } 
+          />
+          :
+          <Header 
+            title={"歡迎來到中信虛擬分行" }
+            subtitle={ `- 掃描<span class='text-[#61a9a5]'>通行證</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` } 
+          />
+        }
+
+
         <div className='flex flex-col justify-center items-center h-1/2 my-2'>
           
           <div className='mt-10 -mb- relative w-3/5 ml-10'> 
