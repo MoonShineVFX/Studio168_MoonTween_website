@@ -211,8 +211,8 @@ function Index({title}) {
       </div>
       <div className='flex flex-col'>
         <Header 
-          title="數位分身控制器" 
-          subtitle={`- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -`} 
+          title={isModalOpen ? "歡迎來到中信虛擬分行" : "數位分身控制器"  }
+          subtitle={isModalOpen  ? `- 掃描<span class='text-[#61a9a5]'>通行證</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` : `- 使用<span class='text-[#61a9a5]'>控制器</span>來操作您的分身進行互動吧！ -`} 
         />
         <div className='flex flex-col justify-center items-center h-1/2 my-2'>
           
