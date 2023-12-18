@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "studio168-moontwin"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
