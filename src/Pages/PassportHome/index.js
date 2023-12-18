@@ -60,12 +60,15 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
               className='p-3 mt-6 bg-contain bg-no-repeat w-10/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
               style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
             >
+              {encryptResult.length >0 &&
               <QRCode
                 size={256}
                 style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                 value={lineUserData && encryptResult}
                 viewBox={`0 0 256 256`}
               />
+              }
+
             </div> }
             {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 text-sm '>{appStatus?.msg}</div> }
           </div>
