@@ -89,7 +89,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
                 
               </div> 
             }
-            {/* {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 text-sm '>{appStatus?.msg}</div> } */}
+            {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 text-sm '>{appStatus?.msg}</div> }
           </div>
 
         </motion.div>
