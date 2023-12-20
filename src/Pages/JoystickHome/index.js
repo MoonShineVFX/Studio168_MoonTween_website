@@ -192,7 +192,7 @@ function Index({title}) {
         // 
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
-          // console.log(value)
+          console.log(value)
           setCurrentUser(value)
 
           if(value.Status === 'processing'){
