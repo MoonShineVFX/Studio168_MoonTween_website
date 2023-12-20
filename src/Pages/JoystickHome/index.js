@@ -194,6 +194,14 @@ function Index({title}) {
           var value = childSnapshot.val();
           // console.log(value)
           setCurrentUser(value)
+          if(!isModeldata){
+            setIsModalOpen(true)
+            setAppStatus({
+              status: "none",
+              msg: ""
+            })
+            return
+          }
           if(value.Status === 'processing'){
             setIsModalOpen(true)
             setAppStatus({
