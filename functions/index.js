@@ -6,10 +6,11 @@ admin.initializeApp();
 const algorithm = "aes-256-cbc";
 const key = "aaaaBBBBccccDDDDeeeeFFFFggggHHHH";
 const getADate=()=> {
-	var d = new Date(),
-	month = '' + (d.getMonth() + 1),
-	day = '' + d.getDate(),
-	year = d.getFullYear();
+	var d = new Date();
+	
+	var year = d.getUTCFullYear();
+	var month = '' + (d.getUTCMonth() + 1); // getUTCMonth 返回 0 到 11
+	var day = '' + d.getUTCDate();
 
 	if (month.length < 2) 
 	month = '0' + month;
