@@ -15,6 +15,7 @@ jobs:
       REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
       REACT_APP_FIREBASE_DATABASE_URL: ${{secrets.FIREBASE_DATABASE_URL}}
       REACT_APP_LIFF_JOYSTICK_ID: ${{secrets.LIFF_JOYSTICK_ID}}
+      REACT_APP_API_TOKEN: ${{secrets.API_TOKEN }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

@@ -35,8 +35,10 @@ function Index({title}) {
   const [isInteract, setIsInteract] = useState(0);
 
   const [userData, setUserData] = useState(null);
+  const [isModeldata, setIsModeldata] = useState(false)
+  const [encryptResult, setEncryptResult] = useState('')
   useEffect(() => {
-    const utoken = 'ipLeUhmJquO3vVhvGVcwUqN5qXfBx4yRKcJx+BECY4gwqg3KNTEpYoYoZ2AGVoCx';
+    const utoken = encryptResult;
 
     fetchDataFromApi(utoken)
       .then(data => {
@@ -49,10 +51,12 @@ function Index({title}) {
           console.log('有此人')
           fetchCheckIsModelApi(utoken)
             .then(modeldata => {
-              if(!modeldata[0]){
+              if(!modeldata[0].photo_id){
                 console.log('查無模型')
+                setIsModeldata(false)
               }else{
                 console.log('有模型了')
+                setIsModeldata(true)
               }
             })
         }
@@ -86,6 +90,9 @@ function Index({title}) {
     } catch (error) {
       console.log(error)
     }
+  }
+  const liffCloseWindow = () =>{
+    liff.closeWindow()
   }
   useEffect(()=>{
     init()
@@ -213,7 +220,7 @@ function Index({title}) {
   //     沒有讀取到資料或查無
   //   </div>
   // }
-  const [encryptResult, setEncryptResult] = useState('')
+
   const encryptUid = async(text)=>{
     try {
       const encryptFunction = httpsCallable(functions, "encrypt");
@@ -234,7 +241,7 @@ function Index({title}) {
 
   return (
     <div>
-      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} />
+      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} isModeldata={isModeldata} liffCloseWindow={liffCloseWindow} />
       <div className='fixed z-30 bottom-10 left-0 w-1/3' onClick={handleOpenModal} >
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>

@@ -3,7 +3,7 @@ import Header from '../../Components/Header'
 import { Link,useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import QRCode from "react-qr-code";
-function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptUid,encryptResult}) {
+function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptUid,encryptResult,isModeldata ,liffCloseWindow}) {
   const modalVariants = {
     hidden: {
       opacity: 0,
@@ -42,35 +42,53 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
             </div>
           }
 
-          <div className='flex flex-col justify-center items-center mt-[15px]'>
-            <div className='text-[#61a9a5]  text-2xl border-b border-white pb-2 mb-3 w-full  text-center'>
-              通行證 PASSPORT
-            </div>
-            <div className='w-20 p-1 border rounded-2xl border-white mt-7'>
-              <img src={lineUserData?.picture} alt="" className='  rounded-2xl' />
-            </div>
-            <div className='flex flex-col justify-center items-center mt-4'>
-              <div className='text-xl tracking-wider  text-[#61a9a5] font-extrabold '>{lineUserData?.name}</div>
-              <div className='text-[#788d88] '>{lineUserData?.email}</div>
-            </div>
-            
-            
-            {lineUserData.sub !== 'none' &&
-            <div 
-              className='p-3 mt-6 bg-contain bg-no-repeat w-10/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
-              style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
-            >
-              {encryptResult.length >0 &&
-              <QRCode
-                size={256}
-                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                value={lineUserData && encryptResult}
-                viewBox={`0 0 256 256`}
-              />
-              }
+          <div className='flex flex-col justify-center items-center my-16'>
 
-            </div> }
-            {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 text-sm '>{appStatus?.msg}</div> }
+            <div className='w-[150px]'>
+              <img src="https://moonshine.b-cdn.net/msweb/studio168/joystick_logo.png" alt="" />
+            </div>
+
+
+            
+            
+            {isModeldata ?
+              <div 
+                className='p-3 mt-6 bg-contain bg-no-repeat w-11/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
+                style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
+              >
+                {encryptResult.length >0 &&
+                <QRCode
+                  size={256}
+                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                  value={lineUserData && encryptResult}
+                  viewBox={`0 0 256 256`}
+                />
+                }
+
+              </div> 
+            :
+              <div 
+                className='p-3 mt-10 bg-contain bg-no-repeat w-11/12 aspect-square mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
+                style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
+              >
+                    <div class="sysMsg">
+                      <div class="text-center text-[#7A8E8B] text-lg font-bold ">系統查無數位分身</div>
+                      <div class="text-center text-[#7A8E8B] font-bold">可能是因為</div>
+                      <div class="mt-6 px-4">
+                        <li class="text-[#7A8E8B] text-xs">未進行 - 數位分身掃描</li>
+                        <div class="text-[#62A9A5] text-xs pl-4 my-2">前往數位分身掃瞄區，完成掃描吧！</div>
+                        <li class="text-[#7A8E8B] text-xs mt-4">已進行 - 數位分身掃描</li>
+                        <div class="text-[#62A9A5] text-xs pl-4 my-2">數位分身正在建立中，請等候完成！</div>
+                        <button className=' rounded-lg bg-[#62A9A5] w-full mt-4 py-1 text-white' onClick={liffCloseWindow} >OK</button>
+                      </div>
+
+                      
+
+                    </div>
+                
+              </div> 
+            }
+            {/* {appStatus?.status !== 'default' && <div className='mt-4 text-black/70 text-sm '>{appStatus?.msg}</div> } */}
           </div>
 
         </motion.div>
