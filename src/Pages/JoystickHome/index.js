@@ -58,6 +58,7 @@ function Index({title}) {
           setLineUserData(user)
           encryptUid(user.sub)
             .then((result)=>{
+              console.log(result)
               const utoken = result;
 
               fetchDataFromApi(utoken)
@@ -85,6 +86,9 @@ function Index({title}) {
                   console.error('Error:', error);
                 });
             })
+            .catch((error) => {
+              console.error(error);
+            });
         }
       })
 
