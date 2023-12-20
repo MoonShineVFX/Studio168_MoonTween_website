@@ -220,7 +220,7 @@ function Index({title}) {
   useEffect(() => {
     fetchUserData()
 
-  }, [lineUserData]);
+  }, [lineUserData,isModeldata]);
 
 
   const writeUserXY = (x,y)=>{
