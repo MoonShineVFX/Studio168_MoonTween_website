@@ -8,6 +8,7 @@ import { onValue, ref,child, push, update,set,orderByChild,equalTo,query } from 
 import PassportModal from '../PassportHome';
 import { functions } from "../../firebase";
 import { httpsCallable } from "firebase/functions";
+import { fetchDataFromApi,fetchCheckIsModelApi } from '../../Components/Helps'; 
 function Index({title}) {
   const liffID = process.env.REACT_APP_LIFF_JOYSTICK_ID
   const location = useLocation();
@@ -32,6 +33,34 @@ function Index({title}) {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
 
   const [isInteract, setIsInteract] = useState(0);
+
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    const utoken = 'ipLeUhmJquO3vVhvGVcwUqN5qXfBx4yRKcJx+BECY4gwqg3KNTEpYoYoZ2AGVoCx';
+
+    fetchDataFromApi(utoken)
+      .then(data => {
+        console.log(data);
+        if(!data){
+          console.log('查無使用者')
+          const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
+          window.location.href = externalUrl;
+        }else{
+          console.log('有此人')
+          fetchCheckIsModelApi(utoken)
+            .then(modeldata => {
+              if(!modeldata[0]){
+                console.log('查無模型')
+              }else{
+                console.log('有模型了')
+              }
+            })
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
   const init=async()=>{
     try {
       await liff.init({liffId: liffID}).then(()=>{
@@ -46,7 +75,7 @@ function Index({title}) {
             status: "fail",
             msg: "請從 Line 登入此頁面，再進行操作。"
           })
-          liff.login()
+          // liff.login()
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
