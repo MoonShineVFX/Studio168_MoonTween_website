@@ -74,14 +74,14 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
                     <div class="sysMsg">
                       <div class="text-center text-[#7A8E8B] text-lg font-bold ">系統查無數位分身</div>
                       <div class="text-center text-[#7A8E8B] font-bold">可能是因為</div>
-                      <div class="mt-6 px-4">
+                      <div class="mt-4 px-4">
                         <li class="text-[#7A8E8B] text-xs">未進行 - 數位分身掃描</li>
                         <div class="text-[#62A9A5] text-xs pl-4 my-2">前往數位分身掃瞄區，完成掃描吧！</div>
                         <li class="text-[#7A8E8B] text-xs mt-4">已進行 - 數位分身掃描</li>
                         <div class="text-[#62A9A5] text-xs pl-4 my-2">數位分身正在建立中，請等候完成！</div>
                         
                       </div>
-                      <button className=' rounded-lg bg-[#62A9A5] w-full mt-4 py-1 text-white' onClick={liffCloseWindow} >OK</button>
+                      <button className=' rounded-lg bg-[#62A9A5] w-full mt-2 py-1 text-white' onClick={liffCloseWindow} >OK</button>
 
                       
 
