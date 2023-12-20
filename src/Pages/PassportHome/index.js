@@ -68,7 +68,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
               </div> 
             :
               <div 
-                className='p-3 mt-10 bg-contain bg-no-repeat w-11/12 aspect-square mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
+                className='p-3 mt-8 bg-contain bg-no-repeat w-11/12 aspect-square mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
                 style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
               >
                     <div class="sysMsg">
@@ -79,8 +79,9 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
                         <div class="text-[#62A9A5] text-xs pl-4 my-2">前往數位分身掃瞄區，完成掃描吧！</div>
                         <li class="text-[#7A8E8B] text-xs mt-4">已進行 - 數位分身掃描</li>
                         <div class="text-[#62A9A5] text-xs pl-4 my-2">數位分身正在建立中，請等候完成！</div>
-                        <button className=' rounded-lg bg-[#62A9A5] w-full mt-4 py-1 text-white' onClick={liffCloseWindow} >OK</button>
+                        
                       </div>
+                      <button className=' rounded-lg bg-[#62A9A5] w-full mt-4 py-1 text-white' onClick={liffCloseWindow} >OK</button>
 
                       
 
