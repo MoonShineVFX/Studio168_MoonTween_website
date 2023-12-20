@@ -102,15 +102,9 @@ function Index({title}) {
     init()
   },[])
   useEffect(() => {
-    const fetchData = async () => {
-      // 這裡可以包含你的 fetchUserData() 代碼
-      await fetchUserData();
-    };
-  
-    fetchData(); // 初始化時執行一次
-  
-    // 監聽 lineUserData 變化，當 lineUserData 改變時執行 fetchData()
-  }, [lineUserData]);
+    fetchUserData()
+
+  }, [currentUser]);
   const liffCloseWindow = () =>{
     liff.closeWindow()
   }
@@ -177,7 +171,7 @@ function Index({title}) {
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
-        
+
         if(!isModeldata){
           setIsModalOpen(true)
           setAppStatus({
