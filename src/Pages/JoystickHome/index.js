@@ -173,7 +173,7 @@ function Index({title}) {
           setIsModalOpen(true)
           setAppStatus({
             status: "none",
-            msg: ""
+            msg: "查無分身"
           })
           return
         }
