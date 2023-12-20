@@ -32,7 +32,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
         exit="hidden"
       >
         <motion.div 
-          className='w-10/12 px-6 mx-auto bg-contain aspect-[992/1676] bg-no-repeat bg-top absolute top-1/2 left-1/2'
+          className='w-10/12 px-3 mx-auto bg-contain aspect-[992/1676] bg-no-repeat bg-top absolute top-1/2 left-1/2'
           variants={modalVariants}
           style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_bg.png?width=400'})`}}
         >
