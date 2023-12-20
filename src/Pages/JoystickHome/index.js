@@ -67,7 +67,7 @@ function Index({title}) {
                   if(!data){
                     console.log('查無使用者')
                     const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
-                    // window.location.href = externalUrl;
+                    window.location.href = externalUrl;
                   }else{
                     console.log('有此人')
                     fetchCheckIsModelApi(utoken)
@@ -75,9 +75,11 @@ function Index({title}) {
                         if(!modeldata[0].photo_id){
                           console.log('查無模型')
                           setIsModeldata(false)
+                          setIsModalOpen(true)
                         }else{
                           console.log('有模型了')
                           setIsModeldata(true)
+                          fetchUserData()
                         }
                       })
                   }
@@ -203,10 +205,7 @@ function Index({title}) {
       })
     }
   }
-  useEffect(() => {
-    fetchUserData()
 
-  }, [lineUserData]);
 
   const writeUserXY = (x,y)=>{
     update(ref(database, `PlayerDatas/${currentUserId}`), {
