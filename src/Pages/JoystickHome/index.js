@@ -177,7 +177,15 @@ function Index({title}) {
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
         console.log(data)
-
+        
+        if(!isModeldata){
+          setIsModalOpen(true)
+          setAppStatus({
+            status: "none",
+            msg: ""
+          })
+          return
+        }
         if(!data){
           setCurrentUser({})
           setIsModalOpen(true)
@@ -188,20 +196,14 @@ function Index({title}) {
           return
         }
 
+
         setCurrentUserId( Object.keys(snapshot.val())[0])
         // 
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
           // console.log(value)
           setCurrentUser(value)
-          if(!isModeldata){
-            setIsModalOpen(true)
-            setAppStatus({
-              status: "none",
-              msg: ""
-            })
-            return
-          }
+
           if(value.Status === 'processing'){
             setIsModalOpen(true)
             setAppStatus({
