@@ -52,7 +52,7 @@ function Index({title}) {
             status: "fail",
             msg: "請從 Line 登入此頁面，再進行操作。"
           })
-          liff.login()
+          // liff.login()
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
@@ -101,10 +101,7 @@ function Index({title}) {
   useEffect(()=>{
     init()
   },[])
-  useEffect(() => {
-    fetchUserData()
 
-  }, [currentUser]);
   const liffCloseWindow = () =>{
     liff.closeWindow()
   }
@@ -220,6 +217,10 @@ function Index({title}) {
       })
     }
   }
+  useEffect(() => {
+    fetchUserData()
+
+  }, [lineUserData]);
 
 
   const writeUserXY = (x,y)=>{
