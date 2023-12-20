@@ -98,12 +98,23 @@ function Index({title}) {
       console.log(error)
     }
   }
-  const liffCloseWindow = () =>{
-    liff.closeWindow()
-  }
   useEffect(()=>{
     init()
   },[])
+  useEffect(() => {
+    const fetchData = async () => {
+      // 這裡可以包含你的 fetchUserData() 代碼
+      await fetchUserData();
+    };
+  
+    fetchData(); // 初始化時執行一次
+  
+    // 監聽 lineUserData 變化，當 lineUserData 改變時執行 fetchData()
+  }, [lineUserData]);
+  const liffCloseWindow = () =>{
+    liff.closeWindow()
+  }
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
