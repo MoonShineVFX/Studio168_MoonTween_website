@@ -103,7 +103,7 @@ function Index({title}) {
   }
   useEffect(()=>{
     init()
-  },[])
+  },[lineUserData])
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
