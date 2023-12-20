@@ -79,7 +79,7 @@ function Index({title}) {
             status: "fail",
             msg: "請從 Line 登入此頁面，再進行操作。"
           })
-          // liff.login()
+          liff.login()
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
