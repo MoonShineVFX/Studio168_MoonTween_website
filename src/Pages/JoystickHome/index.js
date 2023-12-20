@@ -37,34 +37,7 @@ function Index({title}) {
   const [userData, setUserData] = useState(null);
   const [isModeldata, setIsModeldata] = useState(false)
   const [encryptResult, setEncryptResult] = useState('')
-  useEffect(() => {
-    const utoken = encryptResult;
 
-    fetchDataFromApi(utoken)
-      .then(data => {
-        console.log(data);
-        if(!data){
-          console.log('查無使用者')
-          const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
-          window.location.href = externalUrl;
-        }else{
-          console.log('有此人')
-          fetchCheckIsModelApi(utoken)
-            .then(modeldata => {
-              if(!modeldata[0].photo_id){
-                console.log('查無模型')
-                setIsModeldata(false)
-              }else{
-                console.log('有模型了')
-                setIsModeldata(true)
-              }
-            })
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }, []);
   const init=async()=>{
     try {
       await liff.init({liffId: liffID}).then(()=>{
@@ -84,6 +57,34 @@ function Index({title}) {
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
           encryptUid(user.sub)
+            .then((result)=>{
+              const utoken = result;
+
+              fetchDataFromApi(utoken)
+                .then(data => {
+                  console.log(data);
+                  if(!data){
+                    console.log('查無使用者')
+                    const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
+                    window.location.href = externalUrl;
+                  }else{
+                    console.log('有此人')
+                    fetchCheckIsModelApi(utoken)
+                      .then(modeldata => {
+                        if(!modeldata[0].photo_id){
+                          console.log('查無模型')
+                          setIsModeldata(false)
+                        }else{
+                          console.log('有模型了')
+                          setIsModeldata(true)
+                        }
+                      })
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                });
+            })
         }
       })
 
@@ -222,17 +223,18 @@ function Index({title}) {
   // }
 
   const encryptUid = async(text)=>{
-    try {
-      const encryptFunction = httpsCallable(functions, "encrypt");
-      const result = await encryptFunction(text)
-      console.log(result.data)
-      setEncryptResult(result.data)
-
-
-
-    } catch (error) {
-      console.log(error) 
-    }
+    return new Promise(async (resolve, reject) => {
+      try {
+        const encryptFunction = httpsCallable(functions, "encrypt");
+        const result = await encryptFunction(text);
+        console.log(result.data);
+        setEncryptResult(result.data);
+        resolve(result.data); // 解決 Promise 並返回結果
+      } catch (error) {
+        console.log(error);
+        reject(error); // 拒絕 Promise 並返回錯誤
+      }
+    });
   }
 
 
