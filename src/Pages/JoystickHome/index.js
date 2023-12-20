@@ -67,7 +67,7 @@ function Index({title}) {
                   if(!data){
                     console.log('查無使用者')
                     const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
-                    window.location.href = externalUrl;
+                    // window.location.href = externalUrl;
                   }else{
                     console.log('有此人')
                     fetchCheckIsModelApi(utoken)
