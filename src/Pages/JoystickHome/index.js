@@ -184,7 +184,7 @@ function Index({title}) {
           setIsModalOpen(true)
           setAppStatus({
             status: "miss",
-            msg: "角色資料不存在! 請掃描以進行操作。"
+            msg: "數位分身不存在虛擬分行，請掃描QR CODE"
           })
           return
         }
@@ -201,7 +201,7 @@ function Index({title}) {
             setIsModalOpen(true)
             setAppStatus({
               status: "processing",
-              msg: "角色資料創建中"
+              msg: "數位分身正在前往虛擬分行"
             })
           }
 
