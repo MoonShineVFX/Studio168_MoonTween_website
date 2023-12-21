@@ -4,7 +4,7 @@
 
 export const fetchDataFromApi = async (utoken) => {
   const apiUrl = 'https://studio168-moontwin.msvfx.com/api/v1/getuserinfo';
-  const authToken = 'yhrqVKBp/+5mGgVCHD1coIFRcn1veD4liBiJwt/tTXk='
+  const authToken = process.env.REACT_APP_API_TOKEN
 
   const headers = {
     'Authorization': authToken,
@@ -36,7 +36,7 @@ export const fetchDataFromApi = async (utoken) => {
 
 export const fetchCheckIsModelApi = async (utoken) => {
   const apiUrl = 'https://studio168-moontwin.msvfx.com/api/v1/checkIsModel';
-  const authToken = 'yhrqVKBp/+5mGgVCHD1coIFRcn1veD4liBiJwt/tTXk='
+  const authToken = process.env.REACT_APP_API_TOKEN
 
   const headers = {
     'Authorization': authToken,
