@@ -58,12 +58,12 @@ function Index({title}) {
           setLineUserData(user)
           encryptUid(user.sub)
             .then((result)=>{
-              console.log(result)
+              // console.log(result)
               const utoken = result;
 
               fetchDataFromApi(utoken)
                 .then(data => {
-                  console.log(data);
+                  // console.log(data);
                   if(!data){
                     console.log('查無使用者')
                     const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
@@ -167,7 +167,7 @@ function Index({title}) {
       const userData = query(ref(database, 'PlayerDatas'),orderByChild('Email'),equalTo(mail))
       return onValue(userData, (snapshot) =>{
         const data = snapshot.val();
-        console.log(data)
+        // console.log(data)
 
         if(!isModeldata){
           setIsModalOpen(true)
@@ -192,7 +192,7 @@ function Index({title}) {
         // 
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
-          console.log(value)
+          // console.log(value)
           setCurrentUser(value)
 
           if(value.Status === 'processing'){
@@ -246,7 +246,7 @@ function Index({title}) {
       try {
         const encryptFunction = httpsCallable(functions, "encrypt");
         const result = await encryptFunction(text);
-        console.log(result.data);
+        // console.log(result.data);
         setEncryptResult(result.data);
         resolve(result.data); // 解決 Promise 並返回結果
       } catch (error) {
