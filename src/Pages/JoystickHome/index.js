@@ -282,7 +282,7 @@ function Index({title}) {
 
         <div className='flex flex-col justify-center items-center h-1/2 my-2'>
           
-          <div className='mt-10 -mb- relative w-3/5 ml-10'> 
+          <div className='mt-4 -mb- relative w-3/5 ml-10'> 
             <div className='w-28 ml-28 -mb-0'>
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
