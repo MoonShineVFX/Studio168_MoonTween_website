@@ -209,7 +209,7 @@ function Index({title}) {
             setIsModalOpen(false)
             setAppStatus({
               status: "ready",
-              msg: "建立完成"
+              msg: "數位分身已進入虛擬分行"
             })
           }
 
