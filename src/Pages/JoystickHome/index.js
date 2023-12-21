@@ -86,6 +86,7 @@ function Index({title}) {
                 })
                 .catch(error => {
                   console.error('Error:', error);
+
                 });
             })
             .catch((error) => {
@@ -100,6 +101,7 @@ function Index({title}) {
   }
   useEffect(()=>{
     init()
+    // test()
   },[])
 
   const liffCloseWindow = () =>{
