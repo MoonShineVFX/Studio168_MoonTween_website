@@ -262,7 +262,7 @@ function Index({title}) {
 
   return (
     <div>
-      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} isModeldata={isModeldata} liffCloseWindow={liffCloseWindow} />
+      <PassportModal isOpen={!isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} isModeldata={isModeldata} liffCloseWindow={liffCloseWindow} />
       <div className='fixed z-30 bottom-10 left-0 w-1/3' onClick={handleOpenModal} >
         <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
       </div>
@@ -293,11 +293,9 @@ function Index({title}) {
               <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
             </button>
           </div>
-          <div className=' relative -mt-14 '> 
-            <div className='w-28 ml-auto -mr-20  mb-20'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_Drag_text.png" alt="滑動控制" />
-            </div> 
-            <div className=' relative z-10'>
+          <div className=' relative mt-20 '> 
+
+            <div className=' relative z-10  mb-20'>
               <Joystick 
                 className=" relative z-10"
                 size={140} 
@@ -312,7 +310,9 @@ function Index({title}) {
               </Joystick>
               <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[180%]'> <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png" alt="" /></div>
             </div>
-
+            <div className='w-28 ml-auto -mr-20 mb-0'>
+              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_Drag_text.png" alt="滑動控制" />
+            </div> 
           </div>
 
         </div>
