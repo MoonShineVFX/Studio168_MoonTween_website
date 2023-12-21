@@ -262,9 +262,9 @@ function Index({title}) {
 
   return (
     <div>
-      <PassportModal isOpen={!isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} isModeldata={isModeldata} liffCloseWindow={liffCloseWindow} />
+      <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} isModeldata={isModeldata} liffCloseWindow={liffCloseWindow} />
       <div className='fixed z-30 bottom-10 left-0 w-1/3' onClick={handleOpenModal} >
-        <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_passport.png" alt="開啟通行證" />
+        <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_QRC.png" alt="打開QRCODE" />
       </div>
       <div className='flex flex-col'>
         {isModalOpen ?
