@@ -313,7 +313,7 @@ function Index({title}) {
               <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[180%]'> <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png" alt="" /></div>
             </div>
             <div className='w-28 ml-auto -mr-20 mb-0'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_Drag_text.png?v=2" alt="滑動控制" />
+              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_Drag_text.png?v=3" alt="滑動控制" />
             </div> 
           </div>
 
