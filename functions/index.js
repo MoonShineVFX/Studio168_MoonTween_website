@@ -24,7 +24,7 @@ let iv = getADate();
 
 
 exports.encrypt = functions.https.onCall((text) => {
-  let cipher = crypto.createCipheriv(algorithm, key, fixedIv);
+  let cipher = crypto.createCipheriv(algorithm, key, iv);
   console.log(iv,key)
   let encrypted = cipher.update(text, "utf8", "base64");
   return encrypted += cipher.final("base64");
