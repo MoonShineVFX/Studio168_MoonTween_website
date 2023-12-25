@@ -5,6 +5,7 @@ admin.initializeApp();
 
 const algorithm = "aes-256-cbc";
 const key = "aaaaBBBBccccDDDDeeeeFFFFggggHHHH";
+const fixedIv = 'moontwinmoontwin';
 const getADate=()=> {
 	var d = new Date();
 	
@@ -23,7 +24,7 @@ let iv = getADate();
 
 
 exports.encrypt = functions.https.onCall((text) => {
-  let cipher = crypto.createCipheriv(algorithm, key, iv);
+  let cipher = crypto.createCipheriv(algorithm, key, fixedIv);
   console.log(iv,key)
   let encrypted = cipher.update(text, "utf8", "base64");
   return encrypted += cipher.final("base64");
