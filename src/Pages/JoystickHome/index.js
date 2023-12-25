@@ -272,7 +272,7 @@ function Index({title}) {
         {isModalOpen ?
           <Header 
             title={"歡迎來到中信虛擬分行" }
-            subtitle={ `- 掃描<span class='text-[#61a9a5]'>通行證</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` } 
+            subtitle={ `- 掃描<span class='text-[#61a9a5]'>QR CODE</span>匯入數位分身體驗<span class='text-[#61a9a5]'>中信虛擬分行</span> -` } 
           />
           :
           <Header 
