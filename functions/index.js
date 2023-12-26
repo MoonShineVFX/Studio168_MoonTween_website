@@ -24,7 +24,7 @@ let iv = getADate();
 
 
 exports.encrypt = functions
-	.region('asia-east')
+	.region('asia-east1')
 	.https.onCall((text) => {
 		let cipher = crypto.createCipheriv(algorithm, key, iv);
 		console.log(iv,key)
