@@ -10,7 +10,7 @@ const getADate=()=> {
 	var d = new Date();
 	
 	var year = d.getFullYear();
-	var month = '' + (d.getMonth() + 1); // getUTCMonth 返回 0 到 11
+	var month = '' + (d.getMonth() + 1); 
 	var day = '' + d.getDate();
 
 	if (month.length < 2) 
