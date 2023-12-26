@@ -17,7 +17,7 @@ const firebase = initializeApp({
   measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 
 });
-const functions = getFunctions(firebase).region('asia-east1');
+const functions = getFunctions(firebase,'asia-east1');
 const firestore = getFirestore(firebase);
 const database = getDatabase(firebase);
 // if (window.location.hostname === "localhost") {
