@@ -52,18 +52,18 @@ function Index({title}) {
             status: "fail",
             msg: "請從 Line 登入此頁面，再進行操作。"
           })
-          liff.login()
+          // liff.login()
         }else{
           const user = liff.getDecodedIDToken();
           setLineUserData(user)
           encryptUid(user.sub)
             .then((result)=>{
-              console.log(result)
+              // console.log(result)
               const utoken = result;
 
               fetchDataFromApi(utoken)
                 .then(data => {
-                  console.log(data);
+                  // console.log(data);
                   if(!data){
                     console.log('查無使用者')
                     const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
