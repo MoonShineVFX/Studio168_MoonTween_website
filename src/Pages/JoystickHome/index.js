@@ -58,12 +58,12 @@ function Index({title}) {
           setLineUserData(user)
           encryptUid(user.sub)
             .then((result)=>{
-              // console.log(result)
+              console.log(result)
               const utoken = result;
 
               fetchDataFromApi(utoken)
                 .then(data => {
-                  // console.log(data);
+                  console.log(data);
                   if(!data){
                     console.log('查無使用者')
                     const externalUrl = 'https://liff.line.me/2001410510-Ll8G2pAM';
