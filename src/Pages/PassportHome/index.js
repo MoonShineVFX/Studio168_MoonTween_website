@@ -34,18 +34,18 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
         <motion.div 
           className='w-10/12 px-4 mx-auto bg-contain aspect-[992/1676] bg-no-repeat bg-top absolute top-1/2 left-1/2'
           variants={modalVariants}
-          style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_bg.png?width=400'})`}}
+          style={{backgroundImage: `url(${'https://r2.web.moonshine.tw/msweb/studio168/passport_bg.png?width=400'})`}}
         >
           {currentUser?.Status === 'ready' && 
             <div onClick={onClose}  className=' absolute right-0 p-3'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/passport_btn_close.png?width=26" alt="" className=' ' />
+              <img src="https://r2.web.moonshine.tw/msweb/studio168/passport_btn_close.png?width=26" alt="" className=' ' />
             </div>
           }
 
           <div className='flex flex-col justify-center items-center my-16'>
 
             <div className='w-[150px]'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/joystick_logo.png" alt="" />
+              <img src="https://r2.web.moonshine.tw/msweb/studio168/joystick_logo.png" alt="" />
             </div>
 
 
@@ -54,7 +54,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
             {isModeldata ?
               <div 
                 className='p-3 mt-6 bg-contain bg-no-repeat w-11/12 mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
-                style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
+                style={{backgroundImage: `url(${'https://r2.web.moonshine.tw/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
               >
                 {encryptResult.length >0 &&
                 <QRCode
@@ -69,7 +69,7 @@ function Passport({ isOpen, onClose, appStatus,currentUser,lineUserData,encryptU
             :
               <div 
                 className='p-3 mt-8 bg-contain bg-no-repeat w-11/12 aspect-square mx-auto drop-shadow-[8px_5px_7px_rgba(98,169,165,0.15)]'
-                style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
+                style={{backgroundImage: `url(${'https://r2.web.moonshine.tw/msweb/studio168/passport_qr2_bg.png?width=400'})`}}
               >
                     <div className="sysMsg">
                       <div className="text-center text-[#7A8E8B] text-lg font-bold ">系統查無數位分身</div>

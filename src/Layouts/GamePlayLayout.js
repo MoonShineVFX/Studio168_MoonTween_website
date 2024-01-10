@@ -6,7 +6,7 @@ function GamePlayLayout() {
   return (
     <div 
       className='h-[100vh]  bg-black bg-center bg-no-repeat bg-cover relative'
-      style={{backgroundImage: `url(${'https://moonshine.b-cdn.net/msweb/studio168/bg.png'})`}}
+      style={{backgroundImage: `url(${'https://r2.web.moonshine.tw/msweb/studio168/bg.png'})`}}
     >
       <Outlet/>
 

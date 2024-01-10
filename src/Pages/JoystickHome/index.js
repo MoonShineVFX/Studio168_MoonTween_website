@@ -45,7 +45,7 @@ function Index({title}) {
           setLineUserData({
             name:"未知的",
             email:"xxx@mail.com",
-            picture:"https://moonshine.b-cdn.net/msweb/studio168/user_a.png?width=200",
+            picture:"https://r2.web.moonshine.tw/msweb/studio168/user_a.png?width=200",
             sub:"none"
           })
           setAppStatus({
@@ -266,7 +266,7 @@ function Index({title}) {
     <div>
       <PassportModal isOpen={isModalOpen} onClose={handleCloseModal} appStatus={appStatus} currentUser={currentUser} lineUserData={lineUserData} encryptUid={encryptUid}  encryptResult={encryptResult} isModeldata={isModeldata} liffCloseWindow={liffCloseWindow} />
       <div className='fixed z-30 bottom-10 left-0 w-1/3' onClick={handleOpenModal} >
-        <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_btn_QRC.png" alt="打開QRCODE" />
+        <img src="https://r2.web.moonshine.tw/msweb/studio168/controller_btn_QRC.png" alt="打開QRCODE" />
       </div>
       <div className='flex flex-col'>
         {isModalOpen ?
@@ -286,13 +286,13 @@ function Index({title}) {
           
           <div className='mt-4 -mb- relative w-3/5 ml-10'> 
             <div className='w-28 ml-28 -mb-0'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
+              <img src="https://r2.web.moonshine.tw/msweb/studio168/controller_tap_text.png" alt="點擊互動" />
             </div> 
             <button 
               className=' w-[120px] flex justify-center items-center text-white transform active:scale-75 transition-transform outline-none'
               onClick={handleInteract}
             >
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
+              <img src="https://r2.web.moonshine.tw/msweb/studio168/controller_tap_btn.png" alt="互動按鈕" />
             </button>
           </div>
           <div className=' relative mt-20 '> 
@@ -310,10 +310,10 @@ function Index({title}) {
               
                 
               </Joystick>
-              <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[180%]'> <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_swipe_range.png" alt="" /></div>
+              <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[180%]'> <img src="https://r2.web.moonshine.tw/msweb/studio168/controller_swipe_range.png" alt="" /></div>
             </div>
             <div className='w-28 ml-auto -mr-20 mb-0'>
-              <img src="https://moonshine.b-cdn.net/msweb/studio168/controller_Drag_text.png?v=3" alt="滑動控制" />
+              <img src="https://r2.web.moonshine.tw/msweb/studio168/controller_Drag_text.png?v=3" alt="滑動控制" />
             </div> 
           </div>
 
