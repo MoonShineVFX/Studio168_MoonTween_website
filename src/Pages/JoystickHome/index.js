@@ -152,6 +152,9 @@ function Index({ title }) {
       // console.log('啟動檢查')
       interval = setInterval(() => {
         fetchUserData();
+        console.log(currentUser?.Email);
+        console.log(lineUserData?.email);
+        console.log(currentUser?.Status);
 
         if (
           currentUser?.Email === lineUserData?.email &&
