@@ -239,9 +239,7 @@ function Index({ title }) {
     }
   };
   useEffect(() => {
-    if (lineUserData && isModeldata) {
-      fetchUserData();
-    }
+    fetchUserData();
   }, [lineUserData, isModeldata]);
 
   const writeUserXY = (x, y) => {
