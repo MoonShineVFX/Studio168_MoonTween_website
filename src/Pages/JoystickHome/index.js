@@ -190,6 +190,10 @@ function Index({ title }) {
       return onValue(userData, (snapshot) => {
         const data = snapshot.val();
         console.log("getDataBasedata", data);
+        if (!data) {
+          console.log("No user found for email:", mail);
+          return;
+        }
         if (!isModeldata) {
           setIsModalOpen(true);
           setAppStatus({
@@ -208,11 +212,11 @@ function Index({ title }) {
           return;
         }
 
-        setCurrentUserId(Object.keys(snapshot.val())[0]);
+        setCurrentUserId(Object.keys(data)[0]);
         //
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
-          console.log(value);
+          console.log("User data:", value);
           setCurrentUser(value);
 
           if (value.Status === "processing") {
@@ -235,7 +239,9 @@ function Index({ title }) {
     }
   };
   useEffect(() => {
-    fetchUserData();
+    if (lineUserData && isModeldata) {
+      fetchUserData();
+    }
   }, [lineUserData, isModeldata]);
 
   const writeUserXY = (x, y) => {
