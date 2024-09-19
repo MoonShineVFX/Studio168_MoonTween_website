@@ -112,6 +112,7 @@ function Index({ title }) {
     }
   };
   useEffect(() => {
+    console.log("start init");
     init();
     // test()
   }, []);
