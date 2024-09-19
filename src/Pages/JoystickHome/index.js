@@ -194,14 +194,14 @@ function Index({ title }) {
           console.log("No user found for email:", mail);
           return;
         }
-        if (!isModeldata) {
-          setIsModalOpen(true);
-          setAppStatus({
-            status: "none",
-            msg: ".",
-          });
-          return;
-        }
+        // if (!isModeldata) {
+        //   setIsModalOpen(true);
+        //   setAppStatus({
+        //     status: "none",
+        //     msg: ".",
+        //   });
+        //   return;
+        // }
         if (!data) {
           setCurrentUser({});
           setIsModalOpen(true);
