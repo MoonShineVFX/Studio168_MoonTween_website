@@ -56,7 +56,7 @@ function Index({ title }) {
         if (!liff.isLoggedIn()) {
           setLineUserData({
             name: "未知的",
-            email: "kilokingw@gmail.com",
+            email: "xxx@mail.com",
             picture:
               "https://r2.web.moonshine.tw/msweb/studio168/user_a.png?width=200",
             sub: "none",
@@ -152,9 +152,6 @@ function Index({ title }) {
       // console.log('啟動檢查')
       interval = setInterval(() => {
         fetchUserData();
-        console.log(currentUser?.Email);
-        console.log(lineUserData?.email);
-        console.log(currentUser?.Status);
 
         if (
           currentUser?.Email === lineUserData?.email &&
@@ -180,28 +177,24 @@ function Index({ title }) {
   //   subtitle={`- 將<span class='text-[#61a9a5]'>通行證</span>對準掃瞄器即可將分身匯入<span class='text-[#61a9a5]'>數位分行</span> -`}
   // />
   const fetchUserData = () => {
-    console.log("fetchUserData", mail);
     if (mail) {
       const userData = query(
-        ref(database, "Test"),
+        ref(database, "PlayerDatas"),
         orderByChild("Email"),
         equalTo(mail)
       );
       return onValue(userData, (snapshot) => {
         const data = snapshot.val();
-        console.log("getDataBasedata", data);
-        if (!data) {
-          console.log("No user found for email:", mail);
+        // console.log(data)
+
+        if (!isModeldata) {
+          setIsModalOpen(true);
+          setAppStatus({
+            status: "none",
+            msg: ".",
+          });
           return;
         }
-        // if (!isModeldata) {
-        //   setIsModalOpen(true);
-        //   setAppStatus({
-        //     status: "none",
-        //     msg: ".",
-        //   });
-        //   return;
-        // }
         if (!data) {
           setCurrentUser({});
           setIsModalOpen(true);
@@ -212,11 +205,11 @@ function Index({ title }) {
           return;
         }
 
-        setCurrentUserId(Object.keys(data)[0]);
+        setCurrentUserId(Object.keys(snapshot.val())[0]);
         //
         snapshot.forEach(function (childSnapshot) {
           var value = childSnapshot.val();
-          console.log("User data:", value);
+          // console.log(value)
           setCurrentUser(value);
 
           if (value.Status === "processing") {
@@ -243,13 +236,13 @@ function Index({ title }) {
   }, [lineUserData, isModeldata]);
 
   const writeUserXY = (x, y) => {
-    update(ref(database, `Test/${currentUserId}`), {
+    update(ref(database, `PlayerDatas/${currentUserId}`), {
       DeltaX: x,
       DeltaY: y,
     });
   };
   const writeUserInteract = (num) => {
-    update(ref(database, `Test/${currentUserId}`), {
+    update(ref(database, `PlayerDatas/${currentUserId}`), {
       IsInteract: num,
     });
   };
