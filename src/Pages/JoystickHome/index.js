@@ -189,7 +189,7 @@ function Index({ title }) {
       );
       return onValue(userData, (snapshot) => {
         const data = snapshot.val();
-
+        console.log("getDataBasedata", data);
         if (!isModeldata) {
           setIsModalOpen(true);
           setAppStatus({
