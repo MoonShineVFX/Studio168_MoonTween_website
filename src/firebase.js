@@ -5,7 +5,7 @@ import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
 // https://firebase.google.com/docs/emulator-suite/connect_firestore#android_apple_platforms_and_web_sdks
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
-import { getDatabase, INTERNAL as firebaseDbInternal } from "firebase/database";
+import { getDatabase } from "firebase/database";
 const firebase = initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
@@ -19,7 +19,6 @@ const firebase = initializeApp({
 const functions = getFunctions(firebase);
 const firestore = getFirestore(firebase);
 const database = getDatabase(firebase);
-firebaseDbInternal.forceLongPolling();
 // if (window.location.hostname === "localhost") {
 //   console.log(
 //     "Testing locally: hitting local functions and firestore emulators."
