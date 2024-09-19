@@ -56,7 +56,7 @@ function Index({ title }) {
         if (!liff.isLoggedIn()) {
           setLineUserData({
             name: "未知的",
-            email: "xxx@mail.com",
+            email: "kilokingw@gmail.com",
             picture:
               "https://r2.web.moonshine.tw/msweb/studio168/user_a.png?width=200",
             sub: "none",
@@ -185,8 +185,6 @@ function Index({ title }) {
       );
       return onValue(userData, (snapshot) => {
         const data = snapshot.val();
-        console.log("userMail", mail);
-        console.log(data);
 
         if (!isModeldata) {
           setIsModalOpen(true);
