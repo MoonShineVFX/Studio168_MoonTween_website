@@ -85,6 +85,7 @@ function Index({ title }) {
                   } else {
                     console.log("有此人");
                     fetchCheckIsModelApi(utoken).then((modeldata) => {
+                      console.log(modeldata);
                       if (!modeldata[0].photo_id) {
                         console.log("查無模型");
                         setIsModeldata(false);
