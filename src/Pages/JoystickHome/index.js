@@ -181,7 +181,7 @@ function Index({ title }) {
   const fetchUserData = () => {
     if (mail) {
       const userData = query(
-        ref(database, "PlayerDatas"),
+        ref(database, "Test"),
         orderByChild("Email"),
         equalTo(mail)
       );
@@ -238,13 +238,13 @@ function Index({ title }) {
   }, [lineUserData, isModeldata]);
 
   const writeUserXY = (x, y) => {
-    update(ref(database, `PlayerDatas/${currentUserId}`), {
+    update(ref(database, `Test/${currentUserId}`), {
       DeltaX: x,
       DeltaY: y,
     });
   };
   const writeUserInteract = (num) => {
-    update(ref(database, `PlayerDatas/${currentUserId}`), {
+    update(ref(database, `Test/${currentUserId}`), {
       IsInteract: num,
     });
   };
