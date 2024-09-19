@@ -177,6 +177,7 @@ function Index({ title }) {
   //   subtitle={`- 將<span class='text-[#61a9a5]'>通行證</span>對準掃瞄器即可將分身匯入<span class='text-[#61a9a5]'>數位分行</span> -`}
   // />
   const fetchUserData = () => {
+    console.log("fetchUserData", mail);
     if (mail) {
       const userData = query(
         ref(database, "PlayerDatas"),
